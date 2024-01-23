@@ -1,3 +1,4 @@
+
  AOS.init({
  	duration: 800,
  	easing: 'slide',
@@ -213,6 +214,9 @@ jQuery(document).ready(function($) {
 	};
 	siteMagnificPopup();
 
+
+
+
 	var searchShow = function() {
 		// alert();
 		var searchWrap = $('.search-wrap');
@@ -229,5 +233,27 @@ jQuery(document).ready(function($) {
 		})
 	};
 	searchShow();
+
+
+	$(document).ready(function () {
+		// Handle product search
+		$('#productSearch11').on('input', function () {
+		  var query = $(this).val().toLowerCase();
+	
+		  // Hide/show products based on the search query
+		  $('.product-item11').each(function () {
+			var productName = $(this).find('h3 a').text().toLowerCase();
+			var saleStatus = $(this).find('.onsale').text().toLowerCase();
+			var price = $(this).find('.price').text().toLowerCase();
+	
+			if (productName.includes(query) || saleStatus.includes(query) || price.includes(query)) {
+			  $(this).show();
+			} else {
+			  $(this).hide();
+			}
+		  });
+		});
+	  });
+	
 
 });
